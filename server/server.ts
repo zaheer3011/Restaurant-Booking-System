@@ -3,6 +3,7 @@ import connectDB from "./db/mongoose"
 import cors from "cors"
 import authRouter from "./routes/authRoutes";
 import {NextFunction, Request, Response} from "express"
+import restaurantRouter from "./routes/restaurantRoutes";
 require("dotenv").config();
 
 const app = express();
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 
 app.use("/api/auth", authRouter);
+app.use("/api/restaurant", restaurantRouter);s
 
 // Allow us to use JSON file
 app.use(express.json());
