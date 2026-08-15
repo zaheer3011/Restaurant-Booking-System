@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt'
 import {User} from "../models/User";
-import { AutthRequest } from "../middleware/auth";
+import { AuthRequest } from "../middleware/auth";
 
 // generating jwt as a string and expires in 30 days
 const generateToken = (id : string) => {
@@ -81,6 +81,11 @@ export const loginUser = async (req : Request, res : Response) : Promise<void> =
       return;
     }
 
+    if(!user.password) {
+      res.status(400).json({message : "Password not found"});
+      return;
+    }
+
     // Compare user password 
     const isMatch = await bcrypt.compare(password, user.password);
 
@@ -110,7 +115,7 @@ export const loginUser = async (req : Request, res : Response) : Promise<void> =
 // GET api/auth/me
 // @acess private
 
-export const getMe = async (req : AutthRequest, res : Response) => {
+export const getMe = async (req : AuthRequest, res : Response) => {
   try {
 
     if(!req.user) {

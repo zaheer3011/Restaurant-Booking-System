@@ -1,4 +1,5 @@
-import { Schema, Document, model } from "mongoose"; 
+import { Schema, Document, model, Types } from "mongoose"; 
+import * as crypto from "crypto"
 
 export interface IBooking extends Document {
    user: Types.ObjectId;
@@ -17,13 +18,13 @@ export interface IBooking extends Document {
 const bookingSchema = new Schema <IBooking> (
   {
     user : {
-      type : Schema.Types.objectId,
+      type : Schema.Types.ObjectId,
       ref : "User",
       required : true
     },
 
     restaurant : {
-      type : Schema.Types.objectid,
+      type : Schema.Types.ObjectId,
       ref : "Restaurant",
       required : true
     },
@@ -74,7 +75,7 @@ const bookingSchema = new Schema <IBooking> (
 
 bookingSchema.pre("save", function () {
   if(!this.bookingId) {
-    this.bookingId = `GR-${crypto.randomBytes(4).toString("hext").toUpperCase()}`
+    this.bookingId = `GR-${crypto.randomBytes(4).toString("hex").toUpperCase()}`
   }
 })
 

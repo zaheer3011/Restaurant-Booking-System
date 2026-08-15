@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import {Restaurant} from "../models/Restaurant"
 import jwt, { decode } from "jsonwebtoken"
-import User from "../models/User"
-import Booking from "../models/Booking"
+import { User } from "../models/User"
+import { Booking } from "../models/Booking"
 
 // Get All Restaurant Search and Fields
 // GET /api/restaurant
-const getRestaurant = async (req : Request , res : Response) : Promise <void> => {
+export const getRestaurant = async (req : Request , res : Response) : Promise <void> => {
 
     try {
 
@@ -69,7 +69,7 @@ const getRestaurant = async (req : Request , res : Response) : Promise <void> =>
 
 // Get All featuredRestaurant
 // GET /api/restaurants/featured
-const getFeaturedRestaurant = async (req : Request, res : Response) : Promise <void> => {
+export const getFeaturedRestaurant = async (req : Request, res : Response) : Promise <void> => {
 
     try {
 
@@ -89,7 +89,7 @@ const getFeaturedRestaurant = async (req : Request, res : Response) : Promise <v
 
 // Get Single restaurant by slug
 // GET /api/restaurant/slug
-const getRestaurantBySlug = async (req : Request, res : Response) : Promise <void> => {
+export const getRestaurantBySlug = async (req : Request, res : Response) : Promise <void> => {
 
     try {
 
@@ -110,9 +110,9 @@ const getRestaurantBySlug = async (req : Request, res : Response) : Promise <voi
 
                     const user = await User.findById(decoded.id);
 
-                    if(user && (user.role === 'admin' || (user.role === 'owner' && restaurant.owner.toString() === user._id.toString())) {
+                    if(user && (user.role === 'admin' || (user.role === 'owner' && restaurant.owner.toString() === user._id.toString()))) {
                         isAuthroized = true
-                    })
+                    }
                 }
 
                 catch(err : any) {
@@ -142,7 +142,7 @@ const getRestaurantBySlug = async (req : Request, res : Response) : Promise <voi
 
 // Get dynamic seat availabiliy for slots
 // GET /api/restaurant/availability
-const getRestaurantAvailability = async (req : Request, res : Response) => {
+export const getRestaurantAvailability = async (req : Request, res : Response) : Promise <void> => {
 
     try {
 
@@ -163,14 +163,14 @@ const getRestaurantAvailability = async (req : Request, res : Response) => {
 
         // Get All active bookings on this date for the restaurantf
         const bookings = await Booking.find({
-            restaurant : Restaurant._id,
+            restaurant : restaurant._id,
             date : bookingDate,
             status : "confirmed"
         })
 
         // Map slots to available capacities
         const availability = restaurant.availableSlots.map((slot) => {
-            const bookedSeats = bookings.filter((b) => b.time === slot).reduce((sum, b) => sum + b.guests)
+            const bookedSeats = bookings.filter((b) => b.time === slot).reduce((sum, b) => sum + b.guests, 0)
 
             const totalSeats = restaurant.totalSeats || 20;
             const availableSeats = Math.max(0, totalSeats - bookedSeats);
