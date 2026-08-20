@@ -5,6 +5,7 @@ import {NextFunction, Request, Response} from "express"
 import restaurantRouter from "./routes/restaurantRoutes";
 import bookingRouter from "./routes/bookingRoutes";
 import { connectDB } from "./config/db"
+import ownerRouter from "./routes/ownerRouter";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,7 @@ app.use(cors());
 app.use("/api/auth", authRouter);
 app.use("/api/restaurant", restaurantRouter);
 // app.use("/api/booking", bookingRouter);
+app.use('/api/owner', ownerRouter)
 
 // Allow us to use JSON file
 app.use(express.json());

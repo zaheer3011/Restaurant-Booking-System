@@ -4,7 +4,7 @@ export interface IRestaurant extends Document {
     name : string;
     slug : string;
     description : string;
-    cuisino : string;
+    cuisine : string;
     priceRange : "$" | "$$" | "$$$" | "$$$";
     rating : number;
     reviewCount : number;
@@ -44,7 +44,7 @@ const restaurantSchema = new Schema <IRestaurant> (
         required : true,
     },
 
-    cuisino : {
+    cuisine : {
         type : String,
         required : true,
         trim : true
