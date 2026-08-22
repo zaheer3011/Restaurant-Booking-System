@@ -6,7 +6,6 @@ import mongoose from "mongoose";
 export const connectDB = async () : Promise <void> => {
   try {
     const conn = process.env.MONGO_URL;
-    console.log(conn)
 
     if(!conn) {
       throw new Error("MONGO URL is not defined");

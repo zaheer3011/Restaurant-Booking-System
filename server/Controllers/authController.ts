@@ -136,7 +136,7 @@ export const getMe = async (req : AuthRequest, res : Response) => {
 }
 
 // POST api/auth/logout
-export const logoutUser = async (req : Request, res : Response) : Promise<void> => {
-  try {
-  } catch (err) {}
-};
+// export const logoutUser = async (req : Request, res : Response) : Promise<void> => {
+//   try {
+//   } catch (err) {}
+// };
