@@ -37,6 +37,10 @@ app.use((err : Error, req : Request, res : Response, next : NextFunction) => {
   })
 })
 
+app.get('/', (req, res) => {
+  res.send('<h4>Server is LIve</h4>')
+})
+
 app.listen(PORT, () => {
   console.log(`Server is running at PORT No : ${PORT}`);
 });
