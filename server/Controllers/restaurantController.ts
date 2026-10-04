@@ -68,7 +68,11 @@ export const getRestaurant = async (req : Request , res : Response) : Promise <v
 }
 
 // Get All featuredRestaurant
+<<<<<<< HEAD
 // GET /api/restaurant/featured
+=======
+// GET /api/restaurants/featured
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
 export const getFeaturedRestaurant = async (req : Request, res : Response) : Promise <void> => {
 
     try {

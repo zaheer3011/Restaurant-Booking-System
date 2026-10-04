@@ -51,7 +51,11 @@ export default function BookingConfirmation() {
             try {
 
                 setLoading(true);
+<<<<<<< HEAD
                 const res = await api.get(`/restaurant/${slug}`)
+=======
+                const res = await api.get(`/restaurants/${slug}`)
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                 setRestaurant(res.data);
             }
 
@@ -89,6 +93,7 @@ export default function BookingConfirmation() {
         try {
             setConfirming(true);
             
+<<<<<<< HEAD
             const res = await api.post('/booking/my', {
                 restaurantId : restaurant._id, 
                 date, 
@@ -96,6 +101,9 @@ export default function BookingConfirmation() {
                 guests, 
                 occasion, 
                 specialRequests})
+=======
+            const res = await api.post('/bookings', {restaurantId : restaurant._id, date, time : slot, guests, occasion, specialRequests})
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
             setConfirmedBooking(res.data);
 
         } catch (error: any) {

@@ -18,17 +18,26 @@ connectDB();
 // Middleware
 app.use(cors());
 
+<<<<<<< HEAD
 // Allow us to use JSON file
 app.use(express.json());
 
 app.use(express.urlencoded({ extended : true}))
 
+=======
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
 app.use("/api/auth", authRouter);
 app.use("/api/restaurant", restaurantRouter);
 app.use("/api/booking", bookingRouter);
 app.use('/api/owner', ownerRouter)
 app.use('/api/admin', adminRouter)
 
+<<<<<<< HEAD
+=======
+// Allow us to use JSON file
+app.use(express.json());
+
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
 // Global Error handler
 app.use((err : Error, req : Request, res : Response, next : NextFunction) => {
   console.log("Unhandled Error", err);

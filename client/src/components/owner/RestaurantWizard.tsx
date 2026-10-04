@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import { Utensils, Upload, Image } from "lucide-react";
 import toast from "react-hot-toast";
+<<<<<<< HEAD
+=======
+import { dummyRestaurant } from "../../assets/assets.ts";
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
 import api from "../../lib/api.ts";
 
 interface RestaurantWizardProps {

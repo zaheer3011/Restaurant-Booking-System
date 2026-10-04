@@ -40,15 +40,23 @@ export default function Search() {
         const fetchRestaurants = async () => {
             try {
                 setLoading(true);
+<<<<<<< HEAD
                 
                 // Construct query string directly from searchParams
                 const res = await api.get(`/restaurant?/${searchParams.toString()}`);
+=======
+                // Construct query string directly from searchParams
+                const res = await api.get(`/restaurants?${searchParams.toString()}`);
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                 setRestaurants(res.data);
             }
 
             catch(err : any) {
+<<<<<<< HEAD
 
                 console.log(err)
+=======
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                 toast.error(err?.response?.data?.message || err?.message)
             }
 

@@ -8,6 +8,10 @@ import RestaurantCard from "../components/RestaurantCard.tsx";
 import AuthModal from "../components/AuthModal.tsx";
 import { CalendarIcon, UsersIcon, ClockIcon, MapPinIcon, CalendarDaysIcon } from "lucide-react";
 import toast from "react-hot-toast";
+<<<<<<< HEAD
+=======
+import { dummyFeaturedRestaurants, dummyMyBookingsData } from "../assets/assets.ts";
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
 import api from "../lib/api.ts";
 
 export default function Dashboard() {
@@ -24,13 +28,20 @@ export default function Dashboard() {
             try {
 
                 setLoadingBookings(true);
+<<<<<<< HEAD
                 const res = await api.get('/booking/my');
+=======
+                const res = await api.get('/bookings/my');
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                 setBookings(res.data);
             }
 
             catch(err : any) {
 
+<<<<<<< HEAD
                 console.log(err?.response?.data?.message)
+=======
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                 toast.error(err?.response?.data?.message || err?.message);
             }
 
@@ -51,7 +62,11 @@ export default function Dashboard() {
             
             try {
 
+<<<<<<< HEAD
                 const res = await api.get('/restaurant/featured');
+=======
+                const res = await api.get('/restaurants/featured');
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                 setRecommendations(res.data);
 
             }
@@ -72,7 +87,11 @@ export default function Dashboard() {
 
         try {
             
+<<<<<<< HEAD
             await api.put(`/bookings/${bookingId}/cancel`);
+=======
+            await api.put('/bookings/${bookingId}/cancel');
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
             // Update Local state
 
             setBookings((prev) => prev.map((b) => (b._id === bookingId ? {...b, status : "cancelled"} : b)))

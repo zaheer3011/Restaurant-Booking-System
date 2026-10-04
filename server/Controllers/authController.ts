@@ -16,7 +16,11 @@ export const registerUser = async (req : Request, res : Response) : Promise<void
     const { name, email, password, phone, role } = req.body;
 
     if(!name || !email || !password) {
+<<<<<<< HEAD
       res.status(400).json({message : "Please fill all the required details"})
+=======
+      res.status(400).json({message : "Please fill al l the required details"})
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
       return;
     }
 
@@ -38,8 +42,11 @@ export const registerUser = async (req : Request, res : Response) : Promise<void
       role
     })
 
+<<<<<<< HEAD
     console.log(generateToken(user._id.toString()))
 
+=======
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
     // If user exists
     if(user) {
       res.status(201).json({

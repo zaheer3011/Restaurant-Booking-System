@@ -33,7 +33,11 @@ export default function RestaurantDetail() {
            try {
 
                 setLoading(true);
+<<<<<<< HEAD
                 const res = await api.get(`/restaurant/${slug}`);
+=======
+                const res = await api.get(`/restaurants/${slug}`);
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                 setRestaurant(res.data);
 
                 // Initialize Booking values...
@@ -63,7 +67,11 @@ export default function RestaurantDetail() {
             try {
 
                 setLoading(true);
+<<<<<<< HEAD
                 const res = await api.get(`/restaurant/${restaurant._id}/availability?date=${selectedDate}`);
+=======
+                const res = await api.get(`/restaurants/${restaurant._id}/availability?date=${selectedDate}`);
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                 setSlotsAvailability(res.data);
             }
 

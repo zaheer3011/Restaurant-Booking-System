@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect } from "react";
+<<<<<<< HEAD
+=======
+import { dummyUser } from "../assets/assets.js";
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
 import api from "../lib/api.js";
 import toast from "react-hot-toast";
 
@@ -65,7 +69,11 @@ export const AppContextProvider = ({ children }: Props) => {
         try {
 
             setLoading(true);
+<<<<<<< HEAD
             const res = await api.post('/auth/register', {name, email, password, phone, role});
+=======
+            const res = await api.post('/auth/register', {name, email, password});
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
 
             const { token : userToken, ...userData} = res.data;
             
@@ -80,8 +88,11 @@ export const AppContextProvider = ({ children }: Props) => {
 
         catch(err : any) {
 
+<<<<<<< HEAD
             console.log(err.response?.data);
 
+=======
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
             toast.error(err?.response?.data?.message || err?.message);
             return false;
         }
@@ -105,6 +116,7 @@ export const AppContextProvider = ({ children }: Props) => {
             if (token) {
                 try {
                     const res = await api.get('/auth/me');
+<<<<<<< HEAD
 
                     setUser(res.data);
                 }
@@ -112,6 +124,12 @@ export const AppContextProvider = ({ children }: Props) => {
 
                     console.log(err);
                     
+=======
+                    localStorage.removeItem(res.data);
+                }
+                catch(err : any) {
+
+>>>>>>> efb1102fa514fb7abed47a80c60ae8150449cb34
                     toast.error(err?.response?.data?.message || err?.message);
                     logout()
                 }
